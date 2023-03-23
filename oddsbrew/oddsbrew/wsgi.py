@@ -14,3 +14,9 @@ from django.core.wsgi import get_wsgi_application
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'oddsbrew.settings')
 
 application = get_wsgi_application()
+
+from whitenoise import WhiteNoise
+
+# Add WhiteNoise middleware to handle static files
+application = WhiteNoise(application)
+
