@@ -1,8 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from .findPicks import main
+from oddsbrewapp.findPicks import main
+from django.core.cache import cache
 # Create your views here.
 
 def display_data(request):
-    data = main()
-    return render(request, 'oddsbrewapp/data.html', {'data': data})
+    data, alldata = main()
+    print(data)
+    print(alldata)
+    return render(request, 'oddsbrewapp/data.html', {'data': data, 'alldata': alldata})

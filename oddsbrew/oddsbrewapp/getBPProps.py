@@ -1,6 +1,5 @@
 import requests
-import json
-from .getBPSchedule import getGameIds
+from oddsbrewapp.getBPSchedule import getGameIds
 
 
 #gary-trent-jr

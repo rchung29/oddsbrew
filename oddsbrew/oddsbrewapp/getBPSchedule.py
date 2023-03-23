@@ -1,8 +1,11 @@
 import requests
-import json
+from datetime import date
+
 
 def getGameIds():
-    url = "https://api.bettingpros.com/v3/events?sport=NBA&date=2023-03-21"
+    today = date.today()
+    formatted_date = today.strftime("%Y-%m-%d")
+    url = f"https://api.bettingpros.com/v3/events?sport=NBA&date={formatted_date}"
     headers = {
         "accept": "application/json, text/plain, */*",
         "accept-encoding": "gzip, deflate, br",

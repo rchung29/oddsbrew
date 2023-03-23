@@ -1,5 +1,5 @@
-import requests
-from .getBPProps import getBPProps
+from oddsbrewapp.getBPProps import getBPProps
+from oddsbrewapp.PrizePicks import get_player_data
 
 def format_name(name):
     if name == "TREY MURPHY III":
@@ -25,84 +25,6 @@ def format_name(name):
         return "deandre-hunter"
     return f"{first.lower()}-{last.lower()}"
 
-def get_player_data():
-    pp_props_url = 'https://api.prizepicks.com/projections?league_id=7&per_page=250&single_stat=true'
-    headers = {
-        'Connection': 'keep-alive',
-        'Accept': 'application/json; charset=UTF-8',
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36',
-        'Access-Control-Allow-Credentials': 'true',
-        'Sec-Fetch-Site': 'same-origin',
-        'Sec-Fetch-Mode': 'cors',
-        'Referer': 'https://app.prizepicks.com/',
-        'Accept-Encoding': 'gzip, deflate, br',
-        'Accept-Language': 'en-US,en;q=0.9'
-    }
-
-    with requests.Session() as session:
-        session.headers.update(headers)
-        response = session.get(url=pp_props_url)
-    response_json = response.json()
-
-    # Extract data and included objects
-    data = response_json['data']
-    included = response_json['included']
-
-    # Create a dictionary to store new_player objects
-    new_players = {}
-
-    for entry in included:
-        if entry['type'] == 'new_player':
-            new_players[entry['id']] = entry
-
-    # Loop through the data to find projections and match them to new_players
-    output_data = []
-
-    for entry in data:
-        if entry['type'] == 'projection':
-            player_id = entry['relationships']['new_player']['data']['id']
-            if player_id in new_players:
-                matched_player = new_players[player_id]
-                team = matched_player['attributes']['team']
-                player_name = matched_player['attributes']['name'].replace(" Jr.", "")
-                if player_name.startswith("KJ "):
-                    player_name = player_name.replace("KJ ", "Kenyon ", 1)
-                output_data.append({
-                    'name': player_name.upper(),
-                    'line_score': entry['attributes']['line_score'],
-                    'stat_type': entry['attributes']['stat_type'],
-                    'team': team
-                })
-
-    return output_data
-
-def getGameIds():
-    url = "https://api.bettingpros.com/v3/events?sport=NBA&date=2023-03-21"
-    headers = {
-        "accept": "application/json, text/plain, */*",
-        "accept-encoding": "gzip, deflate, br",
-        "accept-language": "en-US,en;q=0.9",
-        "dnt": "1",
-        "origin": "https://www.bettingpros.com",
-        "referer": "https://www.bettingpros.com/nba/odds/player-props/giannis-antetokounmpo/",
-        "sec-ch-ua": '"Google Chrome";v="111", "Not(A:Brand";v="8", "Chromium";v="111"',
-        "sec-ch-ua-mobile": "?1",
-        "sec-ch-ua-platform": "Android",
-        "sec-fetch-dest": "empty",
-        "sec-fetch-mode": "cors",
-        "sec-fetch-site": "same-site",
-        "user-agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Mobile Safari/537.36",
-        "x-api-key": "CHi8Hy5CEE4khd46XNYL23dCFX96oUdw6qOt1Dnh",
-    }
-
-    response = requests.get(url, headers=headers)
-    data = response.json()
-
-    event_ids = [str(event["id"]) for event in data["events"]]
-    event_ids_string = ":".join(event_ids)
-
-    return event_ids_string
-
 def compare_props(csv_props, bp_props):
     result = []
     for csv_prop in csv_props:
@@ -121,6 +43,14 @@ def compare_props(csv_props, bp_props):
                     "mgmline": bp_prop["MGM Line"],
                     "mgmover": bp_prop["MGM Over"],
                     "mgmunder": bp_prop["MGM Under"],
+                    "last5avg": csv_prop['last5avg'],
+                    "last5over": csv_prop['last5over'],
+                    "last5under": csv_prop['last5under'],
+                    "last5push": csv_prop['last5push'],
+                    "last10avg": csv_prop['last10avg'],
+                    "last10over": csv_prop['last10over'],
+                    "last10under": csv_prop['last10under'],
+                    "last10push": csv_prop['last10push'],
                 }
                 result.append(prop)
 
@@ -142,7 +72,7 @@ def find_best_props_v2(final_props):
         if len(available_books) > 0:
             for book in available_books:
                 if prop[f'{book}line'] == ppline:
-                    if prop[f'{book}over'] <= -140 or prop[f'{book}under'] <= -140:
+                    if prop[f'{book}over'] <= -138 or prop[f'{book}under'] <= -138:
                         best_props.append(prop)
                         break
                 elif prop[f'{book}line'] < ppline and prop[f'{book}under'] <= -125:
@@ -166,8 +96,6 @@ def main():
     # df2.to_csv('good_picks.csv', index=False)
     # for prop in best_props:
     #     print(prop)
-    # print(final_props)
-    return best_props
-
-# if __name__ == "__main__":
-#     main()
+    print(best_props)
+    print(final_props)
+    return best_props, final_props

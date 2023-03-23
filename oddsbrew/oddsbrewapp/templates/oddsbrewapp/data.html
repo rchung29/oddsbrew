@@ -11,6 +11,61 @@
         <thead>
             <tr>
                 <th>Name</th>
+                <th>Alternate</th>
+                <th>Prop Type</th>
+                <th>PrizePicks Line</th>
+                <th>Draft Kings Line</th>
+                <th>Draft Kings Over</th>
+                <th>Draft Kings Under</th>
+                <th>FanDuel Line</th>
+                <th>FanDuel Over</th>
+                <th>FanDuel Under</th>
+                <th>MGM Line</th>
+                <th>MGM Over</th>
+                <th>MGM Under</th>
+                <th>Last 5 Average</th>
+                <th>Last 5 Over</th>
+                <th>Last 5 Under</th>
+                <th>Last 5 Push</th>
+                <th>Last 10 Average</th>
+                <th>Last 10 Over</th>
+                <th>Last 10 Under</th>
+                <th>Last 10 Push</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data %}
+            <tr>
+                  <td>{{ row.name }}</td>
+                  <td>{{ row.alternate }}</td>
+                  <td>{{ row.propType }}</td>
+                  <td>{{ row.PPLine }}</td>
+                  <td>{{ row.dkline }}</td>
+                  <td>{{ row.dkover }}</td>
+                  <td>{{ row.dkunder }}</td>
+                  <td>{{ row.fdline }}</td>
+                  <td>{{ row.fdover }}</td>
+                  <td>{{ row.fdunder }}</td>
+                  <td>{{ row.mgmline }}</td>
+                  <td>{{ row.mgmover }}</td>
+                  <td>{{ row.mgmunder }}</td>
+                  <td>{{ row.last5avg }}</td>
+                  <td>{{ row.last5over }}</td>
+                  <td>{{ row.last5under }}</td>
+                  <td>{{ row.last5push }}</td>
+                  <td>{{ row.last10avg }}</td>
+                  <td>{{ row.last10over }}</td>
+                  <td>{{ row.last10under }}</td>
+                  <td>{{ row.last10push }}</td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
                 <th>Prop Type</th>
                 <th>PrizePicks Line</th>
                 <th>Draft Kings Line</th>
@@ -25,7 +80,7 @@
             </tr>
         </thead>
         <tbody>
-            {% for row in data %}
+            {% for row in alldata %}
             <tr>
           <td>{{ row.name }}</td>
           <td>{{ row.propType }}</td>
