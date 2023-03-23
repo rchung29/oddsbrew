@@ -1,5 +1,6 @@
 import requests
 from oddsbrewapp.getBPSchedule import getGameIds
+import json
 
 
 #gary-trent-jr
@@ -51,7 +52,13 @@ def getBPProps():
 
     response = requests.get(url, headers=headers)
     response_json = response.json()
-    # print(response)
+    # if response.status_code == 200:
+    #     data = response.json()
+    #
+    #     with open('data.json', 'w') as f:
+    #         json.dump(data, f)
+    # else:
+    #     print(f"Request failed with status code: {response.status_code}")
     output = []
     for row in response_json["offers"]:
         name = row["participants"][0]["player"]["slug"]
@@ -99,19 +106,19 @@ def getBPProps():
                     if props["id"] == 12 and ou == "over":
                         dfOver = props["lines"][0]["cost"]
                         dfLine = props["lines"][0]["line"]
-                    elif props["id"] == 13 and ou == "over":
+                    elif props["id"] == 19 and ou == "over":
                         mgmOver = props["lines"][0]["cost"]
                         mgmLine = props["lines"][0]["line"]
-                    elif props["id"] == 19 and ou == "over":
+                    elif props["id"] == 10 and ou == "over":
                         fdOver = props["lines"][0]["cost"]
                         fdLine = props["lines"][0]["line"]
                     elif props["id"] == 12 and ou == "under":
                         dfUnder = props["lines"][0]["cost"]
                         dfLine = props["lines"][0]["line"]
-                    elif props["id"] == 13 and ou == "under":
+                    elif props["id"] == 19 and ou == "under":
                         mgmUnder = props["lines"][0]["cost"]
                         mgmLine = props["lines"][0]["line"]
-                    elif props["id"] == 19 and ou == "under":
+                    elif props["id"] == 10 and ou == "under":
                         fdUnder = props["lines"][0]["cost"]
                         fdLine = props["lines"][0]["line"]
             output.append({'name': formatted_name,'propType':propType,'Draft Kings Line':dfLine,'Draft Kings Over':dfOver,'Draft Kings Under':dfUnder,'Fanduel Line':fdLine,'Fanduel Over':fdOver,'Fanduel Under':fdUnder,'MGM Line':mgmLine,'MGM Over':mgmOver,'MGM Under':mgmUnder})
@@ -123,19 +130,19 @@ def getBPProps():
                     if props["id"] == 12 and ou == "over":
                         dfOver = props["lines"][0]["cost"]
                         dfLine = props["lines"][0]["line"]
-                    elif props["id"] == 13 and ou == "over":
+                    elif props["id"] == 19 and ou == "over":
                         mgmOver = props["lines"][0]["cost"]
                         mgmLine = props["lines"][0]["line"]
-                    elif props["id"] == 19 and ou == "over":
+                    elif props["id"] == 10 and ou == "over":
                         fdOver = props["lines"][0]["cost"]
                         fdLine = props["lines"][0]["line"]
                     elif props["id"] == 12 and ou == "under":
                         dfUnder = props["lines"][0]["cost"]
                         dfLine = props["lines"][0]["line"]
-                    elif props["id"] == 13 and ou == "under":
+                    elif props["id"] == 19 and ou == "under":
                         mgmUnder = props["lines"][0]["cost"]
                         mgmLine = props["lines"][0]["line"]
-                    elif props["id"] == 19 and ou == "under":
+                    elif props["id"] == 10 and ou == "under":
                         fdUnder = props["lines"][0]["cost"]
                         fdLine = props["lines"][0]["line"]
             output.append({'name': formatted_name,'propType':propType,'Draft Kings Line':dfLine,'Draft Kings Over':dfOver,'Draft Kings Under':dfUnder,'Fanduel Line':fdLine,'Fanduel Over':fdOver,'Fanduel Under':fdUnder,'MGM Line':mgmLine,'MGM Over':mgmOver,'MGM Under':mgmUnder})
@@ -147,19 +154,19 @@ def getBPProps():
                     if props["id"] == 12 and ou == "over":
                         dfOver = props["lines"][0]["cost"]
                         dfLine = props["lines"][0]["line"]
-                    elif props["id"] == 13 and ou == "over":
+                    elif props["id"] == 19 and ou == "over":
                         mgmOver = props["lines"][0]["cost"]
                         mgmLine = props["lines"][0]["line"]
-                    elif props["id"] == 19 and ou == "over":
+                    elif props["id"] == 10 and ou == "over":
                         fdOver = props["lines"][0]["cost"]
                         fdLine = props["lines"][0]["line"]
                     elif props["id"] == 12 and ou == "under":
                         dfUnder = props["lines"][0]["cost"]
                         dfLine = props["lines"][0]["line"]
-                    elif props["id"] == 13 and ou == "under":
+                    elif props["id"] == 19 and ou == "under":
                         mgmUnder = props["lines"][0]["cost"]
                         mgmLine = props["lines"][0]["line"]
-                    elif props["id"] == 19 and ou == "under":
+                    elif props["id"] == 10 and ou == "under":
                         fdUnder = props["lines"][0]["cost"]
                         fdLine = props["lines"][0]["line"]
             output.append({'name': formatted_name,'propType':propType,'Draft Kings Line':dfLine,'Draft Kings Over':dfOver,'Draft Kings Under':dfUnder,'Fanduel Line':fdLine,'Fanduel Over':fdOver,'Fanduel Under':fdUnder,'MGM Line':mgmLine,'MGM Over':mgmOver,'MGM Under':mgmUnder})
@@ -171,19 +178,19 @@ def getBPProps():
                     if props["id"] == 12 and ou == "over":
                         dfOver = props["lines"][0]["cost"]
                         dfLine = props["lines"][0]["line"]
-                    elif props["id"] == 13 and ou == "over":
+                    elif props["id"] == 19 and ou == "over":
                         mgmOver = props["lines"][0]["cost"]
                         mgmLine = props["lines"][0]["line"]
-                    elif props["id"] == 19 and ou == "over":
+                    elif props["id"] == 10 and ou == "over":
                         fdOver = props["lines"][0]["cost"]
                         fdLine = props["lines"][0]["line"]
                     elif props["id"] == 12 and ou == "under":
                         dfUnder = props["lines"][0]["cost"]
                         dfLine = props["lines"][0]["line"]
-                    elif props["id"] == 13 and ou == "under":
+                    elif props["id"] == 19 and ou == "under":
                         mgmUnder = props["lines"][0]["cost"]
                         mgmLine = props["lines"][0]["line"]
-                    elif props["id"] == 19 and ou == "under":
+                    elif props["id"] == 10 and ou == "under":
                         fdUnder = props["lines"][0]["cost"]
                         fdLine = props["lines"][0]["line"]
             output.append({'name': formatted_name,'propType':propType,'Draft Kings Line':dfLine,'Draft Kings Over':dfOver,'Draft Kings Under':dfUnder,'Fanduel Line':fdLine,'Fanduel Over':fdOver,'Fanduel Under':fdUnder,'MGM Line':mgmLine,'MGM Over':mgmOver,'MGM Under':mgmUnder})
@@ -195,19 +202,19 @@ def getBPProps():
                     if props["id"] == 12 and ou == "over":
                         dfOver = props["lines"][0]["cost"]
                         dfLine = props["lines"][0]["line"]
-                    elif props["id"] == 13 and ou == "over":
+                    elif props["id"] == 19 and ou == "over":
                         mgmOver = props["lines"][0]["cost"]
                         mgmLine = props["lines"][0]["line"]
-                    elif props["id"] == 19 and ou == "over":
+                    elif props["id"] == 10 and ou == "over":
                         fdOver = props["lines"][0]["cost"]
                         fdLine = props["lines"][0]["line"]
                     elif props["id"] == 12 and ou == "under":
                         dfUnder = props["lines"][0]["cost"]
                         dfLine = props["lines"][0]["line"]
-                    elif props["id"] == 13 and ou == "under":
+                    elif props["id"] == 19 and ou == "under":
                         mgmUnder = props["lines"][0]["cost"]
                         mgmLine = props["lines"][0]["line"]
-                    elif props["id"] == 19 and ou == "under":
+                    elif props["id"] == 10 and ou == "under":
                         fdUnder = props["lines"][0]["cost"]
                         fdLine = props["lines"][0]["line"]
             output.append({'name': formatted_name,'propType':propType,'Draft Kings Line':dfLine,'Draft Kings Over':dfOver,'Draft Kings Under':dfUnder,'Fanduel Line':fdLine,'Fanduel Over':fdOver,'Fanduel Under':fdUnder,'MGM Line':mgmLine,'MGM Over':mgmOver,'MGM Under':mgmUnder})
@@ -219,19 +226,19 @@ def getBPProps():
                     if props["id"] == 12 and ou == "over":
                         dfOver = props["lines"][0]["cost"]
                         dfLine = props["lines"][0]["line"]
-                    elif props["id"] == 13 and ou == "over":
+                    elif props["id"] == 19 and ou == "over":
                         mgmOver = props["lines"][0]["cost"]
                         mgmLine = props["lines"][0]["line"]
-                    elif props["id"] == 19 and ou == "over":
+                    elif props["id"] == 10 and ou == "over":
                         fdOver = props["lines"][0]["cost"]
                         fdLine = props["lines"][0]["line"]
                     elif props["id"] == 12 and ou == "under":
                         dfUnder = props["lines"][0]["cost"]
                         dfLine = props["lines"][0]["line"]
-                    elif props["id"] == 13 and ou == "under":
+                    elif props["id"] == 19 and ou == "under":
                         mgmUnder = props["lines"][0]["cost"]
                         mgmLine = props["lines"][0]["line"]
-                    elif props["id"] == 19 and ou == "under":
+                    elif props["id"] == 10 and ou == "under":
                         fdUnder = props["lines"][0]["cost"]
                         fdLine = props["lines"][0]["line"]
             output.append({'name': formatted_name,'propType':propType,'Draft Kings Line':dfLine,'Draft Kings Over':dfOver,'Draft Kings Under':dfUnder,'Fanduel Line':fdLine,'Fanduel Over':fdOver,'Fanduel Under':fdUnder,'MGM Line':mgmLine,'MGM Over':mgmOver,'MGM Under':mgmUnder})
@@ -243,19 +250,19 @@ def getBPProps():
                     if props["id"] == 12 and ou == "over":
                         dfOver = props["lines"][0]["cost"]
                         dfLine = props["lines"][0]["line"]
-                    elif props["id"] == 13 and ou == "over":
+                    elif props["id"] == 19 and ou == "over":
                         mgmOver = props["lines"][0]["cost"]
                         mgmLine = props["lines"][0]["line"]
-                    elif props["id"] == 19 and ou == "over":
+                    elif props["id"] == 10 and ou == "over":
                         fdOver = props["lines"][0]["cost"]
                         fdLine = props["lines"][0]["line"]
                     elif props["id"] == 12 and ou == "under":
                         dfUnder = props["lines"][0]["cost"]
                         dfLine = props["lines"][0]["line"]
-                    elif props["id"] == 13 and ou == "under":
+                    elif props["id"] == 19 and ou == "under":
                         mgmUnder = props["lines"][0]["cost"]
                         mgmLine = props["lines"][0]["line"]
-                    elif props["id"] == 19 and ou == "under":
+                    elif props["id"] == 10 and ou == "under":
                         fdUnder = props["lines"][0]["cost"]
                         fdLine = props["lines"][0]["line"]
             output.append({'name': formatted_name,'propType':propType,'Draft Kings Line':dfLine,'Draft Kings Over':dfOver,'Draft Kings Under':dfUnder,'Fanduel Line':fdLine,'Fanduel Over':fdOver,'Fanduel Under':fdUnder,'MGM Line':mgmLine,'MGM Over':mgmOver,'MGM Under':mgmUnder})
@@ -267,19 +274,19 @@ def getBPProps():
                     if props["id"] == 12 and ou == "over":
                         dfOver = props["lines"][0]["cost"]
                         dfLine = props["lines"][0]["line"]
-                    elif props["id"] == 13 and ou == "over":
+                    elif props["id"] == 19 and ou == "over":
                         mgmOver = props["lines"][0]["cost"]
                         mgmLine = props["lines"][0]["line"]
-                    elif props["id"] == 19 and ou == "over":
+                    elif props["id"] == 10 and ou == "over":
                         fdOver = props["lines"][0]["cost"]
                         fdLine = props["lines"][0]["line"]
                     elif props["id"] == 12 and ou == "under":
                         dfUnder = props["lines"][0]["cost"]
                         dfLine = props["lines"][0]["line"]
-                    elif props["id"] == 13 and ou == "under":
+                    elif props["id"] == 19 and ou == "under":
                         mgmUnder = props["lines"][0]["cost"]
                         mgmLine = props["lines"][0]["line"]
-                    elif props["id"] == 19 and ou == "under":
+                    elif props["id"] == 10 and ou == "under":
                         fdUnder = props["lines"][0]["cost"]
                         fdLine = props["lines"][0]["line"]
             output.append({'name': formatted_name,'propType':propType,'Draft Kings Line':dfLine,'Draft Kings Over':dfOver,'Draft Kings Under':dfUnder,'Fanduel Line':fdLine,'Fanduel Over':fdOver,'Fanduel Under':fdUnder,'MGM Line':mgmLine,'MGM Over':mgmOver,'MGM Under':mgmUnder})
@@ -291,19 +298,19 @@ def getBPProps():
                     if props["id"] == 12 and ou == "over":
                         dfOver = props["lines"][0]["cost"]
                         dfLine = props["lines"][0]["line"]
-                    elif props["id"] == 13 and ou == "over":
+                    elif props["id"] == 19 and ou == "over":
                         mgmOver = props["lines"][0]["cost"]
                         mgmLine = props["lines"][0]["line"]
-                    elif props["id"] == 19 and ou == "over":
+                    elif props["id"] == 10 and ou == "over":
                         fdOver = props["lines"][0]["cost"]
                         fdLine = props["lines"][0]["line"]
                     elif props["id"] == 12 and ou == "under":
                         dfUnder = props["lines"][0]["cost"]
                         dfLine = props["lines"][0]["line"]
-                    elif props["id"] == 13 and ou == "under":
+                    elif props["id"] == 19 and ou == "under":
                         mgmUnder = props["lines"][0]["cost"]
                         mgmLine = props["lines"][0]["line"]
-                    elif props["id"] == 19 and ou == "under":
+                    elif props["id"] == 10 and ou == "under":
                         fdUnder = props["lines"][0]["cost"]
                         fdLine = props["lines"][0]["line"]
             output.append({'name': formatted_name,'propType':propType,'Draft Kings Line':dfLine,'Draft Kings Over':dfOver,'Draft Kings Under':dfUnder,'Fanduel Line':fdLine,'Fanduel Over':fdOver,'Fanduel Under':fdUnder,'MGM Line':mgmLine,'MGM Over':mgmOver,'MGM Under':mgmUnder})
@@ -315,19 +322,19 @@ def getBPProps():
                     if props["id"] == 12 and ou == "over":
                         dfOver = props["lines"][0]["cost"]
                         dfLine = props["lines"][0]["line"]
-                    elif props["id"] == 13 and ou == "over":
+                    elif props["id"] == 19 and ou == "over":
                         mgmOver = props["lines"][0]["cost"]
                         mgmLine = props["lines"][0]["line"]
-                    elif props["id"] == 19 and ou == "over":
+                    elif props["id"] == 10 and ou == "over":
                         fdOver = props["lines"][0]["cost"]
                         fdLine = props["lines"][0]["line"]
                     elif props["id"] == 12 and ou == "under":
                         dfUnder = props["lines"][0]["cost"]
                         dfLine = props["lines"][0]["line"]
-                    elif props["id"] == 13 and ou == "under":
+                    elif props["id"] == 19 and ou == "under":
                         mgmUnder = props["lines"][0]["cost"]
                         mgmLine = props["lines"][0]["line"]
-                    elif props["id"] == 19 and ou == "under":
+                    elif props["id"] == 10 and ou == "under":
                         fdUnder = props["lines"][0]["cost"]
                         fdLine = props["lines"][0]["line"]
             output.append({'name': formatted_name,'propType':propType,'Draft Kings Line':dfLine,'Draft Kings Over':dfOver,'Draft Kings Under':dfUnder,'Fanduel Line':fdLine,'Fanduel Over':fdOver,'Fanduel Under':fdUnder,'MGM Line':mgmLine,'MGM Over':mgmOver,'MGM Under':mgmUnder})

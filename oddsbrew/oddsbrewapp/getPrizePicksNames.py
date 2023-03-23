@@ -48,6 +48,10 @@ def get_player_names():
                     alternate_name = "O.G. Anunoby"
                 if alternate_name == "Fred VanVleet\t":
                     alternate_name = "Fred VanVleet"
+                if alternate_name == "Nicolas Claxton":
+                    alternate_name = "Nic Claxton"
+                if alternate_name == "Marcus Morris":
+                    alternate_name = "Marcus Morris Sr."
                 output_data.append(alternate_name)
     unique_names = list(set(output_data))
     return unique_names

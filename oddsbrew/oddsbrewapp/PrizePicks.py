@@ -23,6 +23,7 @@ def get_player_data():
 
     # Extract data and included objects
     data = response_json['data']
+    print(len(data))
     included = response_json['included']
 
     # Create a dictionary to store new_player objects
@@ -53,6 +54,10 @@ def get_player_data():
                     alternate_name = "O.G. Anunoby"
                 if alternate_name == "Fred VanVleet\t":
                     alternate_name = "Fred VanVleet"
+                if alternate_name == "Nicolas Claxton":
+                    alternate_name = "Nic Claxton"
+                if alternate_name == "Marcus Morris":
+                    alternate_name = "Marcus Morris Sr."
                 prop_type = entry['attributes']['stat_type']
                 if prop_type != "Fantasy Score" and prop_type != "Free Throws Made" and prop_type != "Blks+Stls" and prop_type != "Turnovers":
                     l5 = getLast5(alternate_name,entry['attributes']['line_score'],prop_type,allstats)

@@ -5,6 +5,4 @@ from django.core.cache import cache
 
 def display_data(request):
     data, alldata = main()
-    print(data)
-    print(alldata)
     return render(request, 'oddsbrewapp/data.html', {'data': data, 'alldata': alldata})

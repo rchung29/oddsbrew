@@ -68,4 +68,18 @@ def getAllStats(prizepicks):
                         output['pts+asts'] += float(events['stats'][13]) + float(events['stats'][8])
                         output['rebs+asts'] += float(events['stats'][7]) + float(events['stats'][8])
                         aggregated.append(output)
+        else:
+            aggregated.append({
+                'name': id['name'],
+                'points': 500,
+                'rebounds': 500,
+                'assists': 500,
+                '3pt': 500,
+                'pts+rebs+asts': 500,
+                'pts+rebs': 500,
+                'pts+asts': 500,
+                'rebs+asts': 500,
+                'steals': 500,
+                'blocks': 500,
+            })
     return aggregated

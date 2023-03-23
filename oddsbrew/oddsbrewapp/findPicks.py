@@ -96,6 +96,4 @@ def main():
     # df2.to_csv('good_picks.csv', index=False)
     # for prop in best_props:
     #     print(prop)
-    print(best_props)
-    print(final_props)
     return best_props, final_props
