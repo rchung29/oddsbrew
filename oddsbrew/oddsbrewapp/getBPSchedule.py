@@ -5,7 +5,7 @@ from datetime import date
 def getGameIds():
     today = date.today()
     formatted_date = today.strftime("%Y-%m-%d")
-    url = f"https://api.bettingpros.com/v3/events?sport=NBA&date=2023-03-23"
+    url = f"https://api.bettingpros.com/v3/events?sport=NBA&date=2023-03-24"
     headers = {
         "accept": "application/json, text/plain, */*",
         "accept-encoding": "gzip, deflate, br",

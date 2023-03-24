@@ -1,20 +1,20 @@
 import requests
 
-def getESPNID():
-    url = "https://sports.core.api.espn.com/v3/sports/basketball/nba/athletes?limit=20000"
-    response = requests.get(url)
-    response_json = response.json()
-    output = []
-    for row in response_json['items']:
-        if id == "2991230":
-            print(row['fullName'])
-        push = {
-            'name': row['fullName'],
-            'id': row['id']
-        }
-        output.append(push)
-
-    return output
+# def getESPNID():
+#     url = "https://sports.core.api.espn.com/v3/sports/basketball/nba/athletes?limit=20000"
+#     response = requests.get(url)
+#     response_json = response.json()
+#     output = []
+#     for row in response_json['items']:
+#         if id == "2991230":
+#             print(row['fullName'])
+#         push = {
+#             'name': row['fullName'],
+#             'id': row['id']
+#         }
+#         output.append(push)
+#
+#     return output
 
 def getAllStats(prizepicks):
     ids = getESPNID()

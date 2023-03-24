@@ -1,7 +1,26 @@
 import requests
+import os
 from oddsbrewapp.getESPNStats import getLast5,getLast10
-from oddsbrewapp.getAllStats import getAllStats
-from oddsbrewapp.getPrizePicksNames import get_player_names
+# from oddsbrewapp.getAllStats import getAllStats
+# from oddsbrewapp.getPrizePicksNames import get_player_names
+from firebase_admin import credentials, firestore, initialize_app
+
+cred = credentials.Certificate('oddsbrew-80bea-firebase-adminsdk-vpuex-763c317863.json')
+initialize_app(cred)
+
+db = firestore.client()
+
+def get_db():
+    users_ref = db.collection('data')
+    docs = users_ref.stream()
+
+    users_list = []
+
+    for doc in docs:
+        users_list.append(doc.to_dict())
+
+    return users_list
+
 def get_player_data():
     pp_props_url = 'https://api.prizepicks.com/projections?league_id=7&per_page=250&single_stat=true'
     headers = {
@@ -35,7 +54,7 @@ def get_player_data():
 
     # Loop through the data to find projections and match them to new_players
     output_data = []
-    allstats = getAllStats(get_player_names())
+    allstats = get_db()
 
 
     for entry in data:

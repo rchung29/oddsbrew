@@ -127,6 +127,8 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Add configuration for the allowed hosts when deploying to Heroku
 import os
-ALLOWED_HOSTS = [os.environ.get('HEROKU_APP_NAME', '127.0.0.1')]
+ALLOWED_HOSTS = ['oddsbrewapp.herokuapp.com', 'localhost', '127.0.0.1']
+
+STATIC_ROOT = os.path.join(BASE_DIR, '../staticfiles')
 
 
